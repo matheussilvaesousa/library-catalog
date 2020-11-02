@@ -1,0 +1,181 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans", sans-serif;
+}
+
+header #header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 20vh;
+}
+
+header #header-container h1 {
+  font-family: "EB Garamond", serif;
+
+  font-size: 40px;
+  font-weight: 700;
+  margin-left: 100px;
+}
+
+header #header-container button {
+  border: none;
+  background: none;
+  color: #555;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-left: 50px;
+  margin-top: 8px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+
+  height: 80vh;
+}
+
+main #cards-container {
+  height: 100%;
+  max-width: 1140px;
+  padding: 0 90px 0 90px;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+main .card-wrapper {
+  height: 100px;
+  width: 300px;
+
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  color: black;
+  margin: 10px;
+  padding: 30px;
+}
+
+main #card-text-container {
+  display: flex;
+  flex-direction: column;
+}
+
+main .card-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+main .card-author {
+  margin-top: 8px;
+  color: #555;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+main .more-info {
+  font-size: 24px;
+}
+
+#add-book-modal {
+  display: none;
+  position: fixed;
+  overflow: auto;
+  left: 0;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(0, 0, 0, 0.3);
+}
+
+#add-book-modal-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 20px;
+
+  background-color: #e6e6e6;
+  border-radius: 8px;
+  height: 80vh;
+  width: 500px;
+}
+
+#modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0 20px;
+}
+
+#modal-title {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+#close-add-book {
+  align-self: flex-end;
+  font-size: 30px;
+  border: none;
+  background-color: #e6e6e6;
+  cursor: pointer;
+}
+
+#add-book-modal-container label {
+  display: flex;
+  width: auto;
+  line-height: 30px;
+}
+
+#add-book-modal-container .input-wrapper input {
+  display: flex;
+  flex-grow: 1;
+  margin-bottom: 10px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+#add-book-modal-container input::placeholder {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 16px;
+}
+
+#add-book-modal-container .input-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+#add-book-modal-container .checkbox-wrapper {
+  display: flex;
+  font-family: "Noto Sans", sans-serif;
+  align-items: center;
+  margin-left: 10px;
+}
+
+#add-book-modal-container .checkbox-wrapper input {
+  font-family: "Noto Sans", sans-serif;
+}
+
+#add-book-modal-container .checkbox-wrapper input {
+  margin-left: 20px;
+  vertical-align: middle;
+}

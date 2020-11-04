@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  outline: none;
 }
 
 body {
@@ -24,12 +25,18 @@ header #header-container h1 {
 header #header-container button {
   border: none;
   background: none;
-  color: #555;
+  color: #666;
+  transition: color 0.1s;
   font-family: "Noto Sans", sans-serif;
   font-size: 20px;
   font-weight: 400;
   margin-left: 50px;
   margin-top: 8px;
+  cursor: pointer;
+}
+
+header #header-container button:hover {
+  color: #000;
 }
 
 main {
@@ -86,8 +93,45 @@ main .card-author {
   font-weight: 400;
 }
 
+main .book-settings {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 30px;
+}
+
 main .more-info {
-  font-size: 24px;
+  display: flex;
+  background: url(expand.png) no-repeat;
+  opacity: 0.6;
+  transition: opacity 0.1s;
+  background-size: 100% 100%;
+  border: none;
+  height: 24px;
+  width: 24px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+main .more-info:hover {
+  opacity: 1;
+}
+
+main .delete-book {
+  display: flex;
+  background: url(garbage-bin.png) no-repeat;
+  opacity: 0.4;
+  transition: opacity 0.1s;
+
+  background-size: 100% 100%;
+  border: none;
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+}
+
+main .delete-book:hover {
+  opacity: 1;
 }
 
 #add-book-modal {
@@ -143,6 +187,13 @@ main .more-info {
   line-height: 30px;
 }
 
+#add-book-modal-container .input-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
 #add-book-modal-container .input-wrapper input {
   display: flex;
   flex-grow: 1;
@@ -155,13 +206,6 @@ main .more-info {
 #add-book-modal-container input::placeholder {
   font-family: "Noto Sans", sans-serif;
   font-size: 16px;
-}
-
-#add-book-modal-container .input-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 10px;
 }
 
 #add-book-modal-container .checkbox-wrapper {
@@ -178,4 +222,21 @@ main .more-info {
 #add-book-modal-container .checkbox-wrapper input {
   margin-left: 20px;
   vertical-align: middle;
+}
+
+#add-book-modal-container .submit-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#add-book-modal-container #submit-book {
+  color: white;
+  background: #3e3e3e;
+  font-family: "Noto Sans", sans-serif;
+
+  font-size: 16px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
 }

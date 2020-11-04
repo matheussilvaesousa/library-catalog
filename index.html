@@ -13,6 +13,8 @@
       rel="stylesheet"
     />
 
+    <script src="https://unpkg.com/feather-icons"></script>
+
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="main.css" />
 
@@ -34,10 +36,10 @@
     <div id="add-book-modal">
       <div id="add-book-modal-container">
         <div id="modal-header">
-          <div id="modal-title">Add new book</div>
+          <div id="modal-title">New book</div>
           <button id="close-add-book">×</button>
         </div>
-        <form action="#">
+        <form id="add-book-form" action="#">
           <div class="input-wrapper">
             <input type="text" id="title" name="title" placeholder="Title" />
           </div>
@@ -54,7 +56,10 @@
           </div>
           <div class="checkbox-wrapper">
             <label for="read">Have read</label>
-            <input type="checkbox" id="read" name="read" />
+            <input type="checkbox" id="read" name="read" value="finished" />
+          </div>
+          <div class="submit-wrapper">
+            <input type="submit" id="submit-book" value="Add book" />
           </div>
         </form>
       </div>

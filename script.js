@@ -34,12 +34,17 @@ Book.prototype.editPages = function (pages) {
   this.pages = pages;
 };
 
+Book.prototype.editIsFinished = function (isFinished) {
+  this.isFinished = isFinished;
+};
+
 function addBookToLibrary(title, author, pages = null, isFinished = false) {
   myLibrary.push(new Book(title, author, pages, isFinished));
 }
 
 function editBook(event) {
-  const targetIndex = event.target.parentElement.parentElement.dataset.index;
+  const form = event.target.parentElement.parentElement;
+  const targetIndex = form.dataset.index;
   openEditModal(targetIndex);
 }
 
@@ -157,8 +162,10 @@ function handleSubmitEdit(event) {
   event.preventDefault();
   const form = event.target;
   const newPages = form[0].value;
+  const newIsFinished = form[1].checked;
   const index = form.dataset.index;
   myLibrary[index].editPages(newPages);
+  myLibrary[index].editIsFinished(newIsFinished);
   displayAllBooks(myLibrary);
   closeEditModal();
 }

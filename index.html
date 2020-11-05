@@ -65,6 +65,79 @@
       </div>
     </div>
 
+    <div id="edit">
+      <div id="edit-container">
+        <div id="edit-header">
+          <div id="edit-header-title">Edit book</div>
+          <button id="edit-close">×</button>
+        </div>
+        <form id="edit-form" action="#" data-index="">
+          <!-- <div class="input-wrapper">
+            <label for="edit-title" id="edit-title-label"></label>
+            <input
+              type="text"
+              id="edit-title"
+              name="edit-title"
+              placeholder="New title"
+            />
+          </div>
+          <div class="input-wrapper">
+            <label for="edit-author" id="edit-author-label"></label>
+            <input
+              type="text"
+              id="edit-author"
+              name="edit-author"
+              placeholder="New author"
+            />
+          </div> -->
+          <div class="input-wrapper">
+            <label for="edit-pages" id="edit-pages-label"
+              >Number of pages</label
+            >
+            <input
+              type="text"
+              id="edit-pages"
+              name="edit-pages"
+              placeholder="Ex: 100"
+            />
+          </div>
+          <!-- <div class="checkbox-wrapper">
+            <label for="read">Have read</label>
+            <input
+              type="checkbox"
+              id="edit-read"
+              name="edit-read"
+              value="finished"
+            />
+          </div> -->
+          <div class="submit-wrapper">
+            <input type="submit" id="edit-submit" value="Save" />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="detail">
+      <div id="detail-container">
+        <div id="detail-header">
+          <div id="detail-header-title">
+            <span id="header-title-value"></span>
+          </div>
+          <div id="detail-close">×</div>
+        </div>
+        <div id="detail-content">
+          <div id="details-title">Title: <span id="title-value"></span></div>
+          <div id="detail-author">Author: <span id="author-value"></span></div>
+          <div id="detail-pages">
+            Number of pages: <span id="pages-value"></span>
+          </div>
+          <div id="detail-is-finished">
+            Was it completed: <span id="is-finished-value"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer></footer>
     <script src="script.js"></script>
   </body>

@@ -65,6 +65,7 @@ main .card-wrapper {
 
   display: flex;
   flex-direction: row;
+  cursor: pointer;
 
   justify-content: space-between;
   align-items: center;
@@ -102,14 +103,14 @@ main .book-settings {
 
 main .more-info {
   display: flex;
-  background: url(expand.png) no-repeat;
-  opacity: 0.6;
+  background: url(edit.png) no-repeat;
+  opacity: 0.4;
   transition: opacity 0.1s;
   background-size: 100% 100%;
   border: none;
-  height: 24px;
-  width: 24px;
-  margin-bottom: 5px;
+  height: 22px;
+  width: 22px;
+  margin-bottom: 8px;
   cursor: pointer;
 }
 
@@ -174,7 +175,6 @@ main .delete-book:hover {
 }
 
 #close-add-book {
-  align-self: flex-end;
   font-size: 30px;
   border: none;
   background-color: #e6e6e6;
@@ -233,10 +233,189 @@ main .delete-book:hover {
   color: white;
   background: #3e3e3e;
   font-family: "Noto Sans", sans-serif;
+  cursor: pointer;
 
   font-size: 16px;
   font-weight: 700;
   padding: 8px 16px;
   border: none;
   border-radius: 5px;
+}
+
+#edit {
+  display: none;
+  position: fixed;
+  overflow: auto;
+  left: 0;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(0, 0, 0, 0.3);
+}
+
+#edit-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 20px;
+
+  background-color: #e6e6e6;
+  border-radius: 8px;
+  height: 80vh;
+  width: 500px;
+}
+
+#edit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0 20px;
+}
+
+#edit-header-title {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+#edit-close {
+  font-size: 30px;
+  border: none;
+  background-color: #e6e6e6;
+  cursor: pointer;
+}
+
+#edit-container label {
+  display: flex;
+  width: auto;
+  line-height: 30px;
+}
+
+#edit-container .input-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+#edit-container .input-wrapper input {
+  display: flex;
+  flex-grow: 1;
+  margin-bottom: 10px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+#edit-container input::placeholder {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 16px;
+}
+
+#edit-container #edit-pages-label {
+  font-weight: 700;
+  line-height: 36px;
+  margin-right: 20px;
+}
+
+#edit-container .checkbox-wrapper {
+  display: flex;
+  font-family: "Noto Sans", sans-serif;
+  align-items: center;
+  margin-left: 10px;
+}
+
+#edit-container .checkbox-wrapper input {
+  font-family: "Noto Sans", sans-serif;
+}
+
+#edit-container .checkbox-wrapper input {
+  margin-left: 20px;
+  vertical-align: middle;
+}
+
+#edit-container .submit-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#edit-container #edit-submit {
+  color: white;
+  background: #3e3e3e;
+  font-family: "Noto Sans", sans-serif;
+  cursor: pointer;
+
+  font-size: 16px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+#detail {
+  display: none;
+  position: fixed;
+  overflow: auto;
+  left: 0;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(0, 0, 0, 0.3);
+}
+
+#detail-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 30px;
+
+  background-color: #e6e6e6;
+  border-radius: 8px;
+  height: 80vh;
+  width: 500px;
+}
+
+#detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0 40px;
+}
+
+#detail-header-title {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+#detail-close {
+  font-size: 30px;
+  border: none;
+  background-color: #e6e6e6;
+  cursor: pointer;
+}
+
+#detail-content {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#detail-content div {
+  margin-bottom: 20px;
+}
+
+#title-value,
+#author-value,
+#pages-value,
+#is-finished-value {
+  font-weight: normal;
 }

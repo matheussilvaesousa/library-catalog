@@ -1,15 +1,25 @@
 let cardsContainer = document.getElementById("cards-container");
 const addBookForm = document.getElementById("add-book-form");
+const editForm = document.getElementById("edit-form");
 const body = document.querySelector("body");
 const modal = document.getElementById("add-book-modal");
+const editModal = document.getElementById("edit");
+const detail = document.getElementById("detail");
+const detailHeaderTitle = document.getElementById("header-title-value");
+const detailTitle = document.getElementById("title-value");
+const detailAuthor = document.getElementById("author-value");
+const detailPages = document.getElementById("pages-value");
+const detailIsFinished = document.getElementById("is-finished-value");
 const blur = document.getElementById("blur");
 const closeAddBook = document.getElementById("close-add-book");
 const openAddBook = document.getElementById("open-add-book");
-let deleteBookButtons = [];
+const closeDetailButton = document.getElementById("detail-close");
 
 openAddBook.addEventListener("click", openModal);
 closeAddBook.addEventListener("click", closeModal);
 addBookForm.addEventListener("submit", handleSubmitBook);
+editForm.addEventListener("submit", handleSubmitEdit);
+closeDetailButton.addEventListener("click", closeDetail);
 
 let myLibrary = [];
 
@@ -20,17 +30,21 @@ function Book(title, author, pages, isFinished) {
   this.isFinished = isFinished;
 }
 
+Book.prototype.editPages = function (pages) {
+  this.pages = pages;
+};
+
 function addBookToLibrary(title, author, pages = null, isFinished = false) {
   myLibrary.push(new Book(title, author, pages, isFinished));
 }
 
+function editBook(event) {
+  const targetIndex = event.target.parentElement.parentElement.dataset.index;
+  openEditModal(targetIndex);
+}
+
 function deleteBook(event) {
   const targetIndex = event.target.parentElement.parentElement.dataset.index;
-  // const cards = Array.from(document.querySelectorAll(".card-wrapper"));
-  // const matchingCard = cards.filter((card) => {
-  //   return targetIndex === card.dataset.index;
-  // });
-  // matchingCard[0].remove();
   myLibrary.splice(targetIndex, 1);
   displayAllBooks(myLibrary);
 }
@@ -70,21 +84,61 @@ function displayAllBooks(booksArray) {
 
     cardsContainer.appendChild(card);
   });
+
+  const cards = Array.from(document.querySelectorAll(".card-wrapper"));
+  cards.forEach((card) => {
+    card.addEventListener("click", openDetail);
+  });
+
+  const editButtons = Array.from(document.querySelectorAll(".more-info"));
+  editButtons.forEach((button) => {
+    button.addEventListener("click", editBook);
+  });
+
+  const closeEditModalButton = document.getElementById("edit-close");
+  closeEditModalButton.addEventListener("click", closeEditModal);
+
   const deleteButtons = Array.from(document.querySelectorAll(".delete-book"));
-  console.log(deleteButtons);
-  deleteButtons.forEach((button) =>
-    button.addEventListener("click", deleteBook)
-  );
+  deleteButtons.forEach((button) => {
+    button.addEventListener("click", deleteBook);
+  });
 }
 
 function openModal() {
   modal.style.display = "flex";
-  blur.style.display = "block";
 }
 
 function closeModal() {
   modal.style.display = "none";
-  blur.style.display = "none";
+}
+
+function openEditModal(targetIndex) {
+  editForm.dataset.index = targetIndex;
+  editModal.style.display = "flex";
+}
+
+function closeEditModal() {
+  editModal.style.display = "none";
+}
+
+function openDetail(event) {
+  if (event.target.parentElement.classList.contains("book-settings")) {
+    return;
+  }
+  const card = event.target.closest(".card-wrapper");
+  const targetIndex = card.dataset.index;
+  detailHeaderTitle.textContent = myLibrary[targetIndex].title;
+  detailTitle.textContent = myLibrary[targetIndex].title;
+  detailAuthor.textContent = myLibrary[targetIndex].author;
+  detailPages.textContent = myLibrary[targetIndex].pages;
+  detailIsFinished.textContent = myLibrary[targetIndex].isFinished
+    ? "yes"
+    : "no";
+  detail.style.display = "flex";
+}
+
+function closeDetail() {
+  detail.style.display = "none";
 }
 
 function handleSubmitBook(event) {
@@ -96,6 +150,17 @@ function handleSubmitBook(event) {
   const isFinished = form[3].checked;
   addBookToLibrary(title, author, pages, isFinished);
   displayAllBooks(myLibrary);
+  closeModal();
+}
+
+function handleSubmitEdit(event) {
+  event.preventDefault();
+  const form = event.target;
+  const newPages = form[0].value;
+  const index = form.dataset.index;
+  myLibrary[index].editPages(newPages);
+  displayAllBooks(myLibrary);
+  closeEditModal();
 }
 
 addBookToLibrary("1984", "George Orwell", 233, true);

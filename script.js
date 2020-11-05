@@ -21,7 +21,19 @@ addBookForm.addEventListener("submit", handleSubmitBook);
 editForm.addEventListener("submit", handleSubmitEdit);
 closeDetailButton.addEventListener("click", closeDetail);
 
-let myLibrary = [];
+if (localStorage.getItem("localLibrary") === "[]") {
+  localStorage.removeItem("localLibrary");
+}
+
+let myLibrary =
+  localStorage.getItem("localLibrary") === null
+    ? []
+    : JSON.parse(localStorage.getItem("localLibrary"));
+
+window.onunload = function handleWindowClosing() {
+  localStorage.setItem("localLibrary", JSON.stringify(myLibrary));
+  return;
+};
 
 function Book(title, author, pages, isFinished) {
   this.title = title;
@@ -170,9 +182,9 @@ function handleSubmitEdit(event) {
   closeEditModal();
 }
 
-addBookToLibrary("1984", "George Orwell", 233, true);
-addBookToLibrary("Quincas Borba", "Machado de Assis");
-addBookToLibrary("To Kill a Mockingbird", "Harper Lee", true);
-addBookToLibrary("Die Verwandlung", "Franz Kafka");
+// addBookToLibrary("1984", "George Orwell", 233, true);
+// addBookToLibrary("Quincas Borba", "Machado de Assis");
+// addBookToLibrary("To Kill a Mockingbird", "Harper Lee", true);
+// addBookToLibrary("Die Verwandlung", "Franz Kafka");
 
 displayAllBooks(myLibrary);
